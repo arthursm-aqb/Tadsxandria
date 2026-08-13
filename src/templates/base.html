@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TADSXANDRIA - {% block title %}{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+  
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+  <!-- Tailwind 4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <style type="text/tailwindcss">
+    @theme{
+      --color-purple: #5b21b6;
+      --color-purple-main: #6d28d9;
+      --color-purple-light: #ede9fe;
+      --color-purple-hover: #4c1d95;
+      --color-green-main: #63B536;
+      --font-orbitron: 'Orbitron', sans-serif;
+      --color-gray-main: #F3F4F6;
+      --color-blue-main: #4878FE;
+      --color-yellow-main: #FBF748;
+      --color-red-main: #EF4444;
+
+      --color-violet-50: #f0e7fd;
+      --color-violet-100: #e2cffc;
+      --color-violet-200: #c59ff9;
+      --color-violet-300: #a76ff6;
+      --color-violet-400: #8a3ff3;
+      --color-violet-500: #6d0ff0;
+      --color-violet-600: #570cc0;
+      --color-violet-700: #410990;
+      --color-violet-800: #2c0660;
+      --color-violet-900: #160330;
+      --color-violet-950: #0b0218;
+      
+      --color-green-50: #f0f9eb;
+      --color-green-100: #e1f3d8;
+      --color-green-200: #c4e8b0;
+      --color-green-300: #a6dc89;
+      --color-green-400: #88d062;
+      --color-green-500: #6bc43b;
+      --color-green-600: #559d2f;
+      --color-green-700: #407623;
+      --color-green-800: #2b4f17;
+      --color-green-900: #15270c;
+      --color-green-950: #0b1406;
+
+      --color-offwhite: #fefef9;
+    }  
+  </style>
+  
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  
+{% block navbar %}{% include "components/navbar.html" %}{% endblock %}
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+{% block footer %}{% include "components/footer.html" %}{% endblock %}
+  
+</body>
+
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+
+{% block scripts %}{% endblock %}
+</html>

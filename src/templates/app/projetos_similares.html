@@ -1,0 +1,67 @@
+{% load static %}
+    <section class="p-4">
+
+        <h2 class="font-[orbitron] text-3xl pb-1 border-b-2 border-black-300 w-full">Projetos Similares</h2>
+
+        <div class="flex flex-row flex-wrap gap-4 flex-shrink-0 pt-8 pl-2 ">
+            
+            {% for projeto in projetos_similares %}
+
+                <div class="rounded-md w-85 overflow-hidden">
+
+                    <figure class="rounded-sm">
+                        <a href="{% url 'projeto' projeto.id %}" class="block">
+                            <img src="{{ projeto.imagem.url }}" alt=" {{ projeto.titulo }}" class="w-full h-48 object-cover rounded-md border border-gray-300">
+                        </a>
+                    </figure>
+                    <h3 class="font-[orbitron] font-bold text-lg mt-2">{{ projeto.titulo }}</h3>
+                    <div class="flex flex-row items-center gap-1">
+                        <div class="flex flex-row items-center">
+                            <a class="flex justify-between font-[exo 2] w-40 bg-[#63B536] text-sm py-1.5 mb-1 text-white px-6 rounded-md mt-2  "
+                                href="{% url 'projeto' projeto.id %}">Saiba mais
+
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            
+                                    </svg>
+
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="flex flex-row items-center gap-1 px-2">
+                            
+                                <a href="/" aria-disabled="true" class="opacity=50 flex justify-between text-[#63B536] font-[exo 2] text-md underline p-1">PDF PT
+                                    <span> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                                        </svg>
+                                    </span>
+                                </a>
+
+                                <a href="/" aria-disabled="true" class="opacity=50 flex justify-between text-[#63B536] font-[exo 2] text-md underline p-1">PDF EN
+                                    <span> 
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+
+                {% if not projetos_similares %}
+                    <p class="text-gray-500 italic pt-4">Nenhum projeto similar encontrado.</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>

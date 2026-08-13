@@ -1,0 +1,82 @@
+{% load static %}
+<header>
+  <!-- Top bar: logo + controls + auth -->
+  <div class="bg-[#FEFEF9] border-b border-stone-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between p-3 gap-4">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 shrink-0" aria-label="TADSxandria – Página inicial">
+          <img class="w-80" src="{% static 'img/logotipo.png' %}" alt="TADSxandria">
+        </a>
+        
+        <!-- Right controls -->
+        <div class="flex items-center gap-5 ml-auto">
+          
+          <!-- Font size controls -->
+          <div class="hidden sm:flex items-center justify-center gap-1 rounded px-2 py-1">
+            <button class="font-bold hover:cursor-pointer" aria-label="Diminuir fonte">A</button>
+            <span class="text-gray-300 select-none">·</span>
+            <button class="font-bold hover:cursor-pointer" aria-label="Fonte normal">A-</button>
+            <span class="text-gray-300 select-none">·</span>
+            <button class="font-bold text-base hover:cursor-pointer" aria-label="Aumentar fonte">A+</button>
+          </div>
+          
+          <!-- Contrast toggle -->
+          <button class="flex items-center justify-center mr-10 w-5 h-5 rounded-full" aria-label="Alternar contraste">
+            <iconify-icon icon="mdi:circle-half-full" class="text-violet-500 text-2xl hover:cursor-pointer"></iconify-icon>
+          </button>
+          
+          <!-- User icon -->
+          <div class="flex items-center justify-center w-5 h-5 rounded-full" aria-label="Usuário">
+            <iconify-icon icon="mdi:account-circle" class="text-violet-500 text-2xl hover:cursor-pointer"></iconify-icon>
+          </div>
+          
+          <!-- Auth links -->
+          <span class="text-gray-400 hidden sm:inline">
+            <a href="#" class="underline text-green-500">Painel do usuário</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom bar: search + menu -->
+  <nav class="bg-[#FEFEF9] border-b border-stone-400" aria-label="Menu principal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-14 h-11">
+        
+        <!-- Search bar -->
+        <div class="relative flex items-center gap-2 w-lg " role="search">
+          <iconify-icon icon="mdi:magnify" class="absolute left-3 text-gray-500 text-lg"></iconify-icon>
+          <input type="search" placeholder="Busque por um projeto..." aria-label="Pesquisar" class="border border-gray-200 rounded-full py-1 pl-10 flex-1 shadow" />
+          <!-- Hamburger / filter -->
+          <button aria-label="Filtros" class="absolute right-3 top-2 ml-auto shrink-0">
+            <iconify-icon icon="mdi:filter-variant" class="text-gray-500 text-lg"></iconify-icon>
+          </button>
+        </div>
+        
+        <!-- Nav items -->
+        <div class="hidden sm:flex items-center gap-21">
+          <a href="#" class="flex items-center gap-1 hover:text-violet-500">
+            <iconify-icon icon="mdi:history" class="text-xl"></iconify-icon>
+            Recentes
+          </a>
+          <a href="#" class="flex items-center gap-1 hover:text-violet-500">
+            <iconify-icon icon="mdi:help-circle-outline" class="text-xl"></iconify-icon>
+            Ajuda
+          </a>
+          <a href="#" class="flex items-center gap-1 hover:text-violet-500">
+            <iconify-icon icon="mdi:person-box-outline" class="text-xl"></iconify-icon>
+            Contato
+          </a>
+        </div>
+        
+        <!-- Mobile hamburger -->
+        <button class="sm:hidden ml-auto nav-icon-btn" aria-label="Abrir menu">
+          <iconify-icon icon="mdi:menu" class="text-xl"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

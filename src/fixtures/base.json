@@ -1,0 +1,1563 @@
+[
+  {
+    "model": "app.usuario",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$7q0Hj8bN6O8sW3zQ0K4VQd7RkM1x2P0e",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "felipe.aleixo@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Felipe Aleixo",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientador",
+    "pk": 1,
+    "fields": {
+      "usuario_ptr": 1
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "aguiberto.candido@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "AGUIBERTO CANDIDO DA SILVA FILHO",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 2,
+    "fields": {
+      "usuario_ptr": 2
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "alisson.felix@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Alisson Bruno Dantas Felix",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 3,
+    "fields": {
+      "usuario_ptr": 3
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "bruno.isidio@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Bruno Barreto Isidio",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 4,
+    "fields": {
+      "usuario_ptr": 4
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "juliana.silva@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Juliana Martins da Silva",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 5,
+    "fields": {
+      "usuario_ptr": 5
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "patricia.bandeira@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "PATRICIA CRISTINA BANDEIRA DE MELO",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 6,
+    "fields": {
+      "usuario_ptr": 6
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "patricia.pontes@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "PATRICIA MARIA MACIEL DE PONTES",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 7,
+    "fields": {
+      "usuario_ptr": 7
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "raissa.justino@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Raissa Laura Plácido Justino",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 8,
+    "fields": {
+      "usuario_ptr": 8
+    }
+  },
+
+  {
+    "model": "app.categoria",
+    "pk": 1,
+    "fields": {
+      "nome": "Adoção de Animais"
+    }
+  },
+
+  {
+    "model": "app.tecnologia",
+    "pk": 1,
+    "fields": {
+      "nome": "Django",
+      "icone": "fixture/tecnologias/django.png"
+    }
+  },
+  {
+    "model": "app.tecnologia",
+    "pk": 2,
+    "fields": {
+      "nome": "Tailwind",
+      "icone": "fixture/tecnologias/tailwind.png"
+    }
+  },
+  {
+    "model": "app.tecnologia",
+    "pk": 3,
+    "fields": {
+      "nome": "Python",
+      "icone": "fixture/tecnologias/python.png"
+    }
+  },
+
+  {
+    "model": "app.projeto",
+    "pk": 1,
+    "fields": {
+      "titulo": "Parêa Pet",
+      "descricao": "Uma plataforma para match entre adotante e seu pet ideal.",
+      "avaliacao": 4.7,
+      "data_criacao": "2025-09-09T00:00:00Z",
+      "data_finalizacao": null,
+      "data_publicacao": "2026-07-03T00:00:00Z",
+      "categoria_principal": 1,
+      "categorias_secundarias": [],
+      "projetos_favoritos": [],
+      "status": "andamento",
+      "fase": "web",
+      "plataforma": "web",
+      "tecnologias": [
+        1,
+        2,
+        3
+      ],
+      "resumo": "O Parêa Pet nasceu a partir da problemática da superlotação de ONGs e necessidade de adoções mais responsáveis, reduzindo as ocorrências de abandono após a adoção. O público-alvo são ONGs e pessoas interessadas em adotar animais.",
+      "imagem": "fixture/projetos/parea-pet.png",
+      "repositorio": "https://github.com/tads-cnat/parea_pet.git",
+      "contato": "felipe.aleixo@tads.local"
+    }
+  },
+
+  {
+    "model": "app.orientadorprojeto",
+    "pk": 1,
+    "fields": {
+      "orientador": 1,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.participacao",
+    "pk": 1,
+    "fields": {
+      "orientando": 2,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 2,
+    "fields": {
+      "orientando": 3,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 3,
+    "fields": {
+      "orientando": 4,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 4,
+    "fields": {
+      "orientando": 5,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 5,
+    "fields": {
+      "orientando": 6,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 6,
+    "fields": {
+      "orientando": 7,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 7,
+    "fields": {
+      "orientando": 8,
+      "projeto": 1,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.avaliar",
+    "pk": 1,
+    "fields": {
+      "nota": 5,
+      "comentario": "Excelente iniciativa.",
+      "usuario": 2,
+      "projeto": 1
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 2,
+    "fields": {
+      "nota": 5,
+      "comentario": "Projeto muito promissor.",
+      "usuario": 3,
+      "projeto": 1
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 3,
+    "fields": {
+      "nota": 4,
+      "comentario": "Boa proposta.",
+      "usuario": 4,
+      "projeto": 1
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 4,
+    "fields": {
+      "nota": 5,
+      "comentario": "Ótima experiência.",
+      "usuario": 5,
+      "projeto": 1
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientador",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "andre.almeida@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "André Almeida",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientador",
+    "pk": 9,
+    "fields": {
+      "usuario_ptr": 9
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "ryan.silva@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "RYAN ALMEIDA PEREIRA DA SILVA",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 10,
+    "fields": {
+      "usuario_ptr": 10
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "rubens.neto@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "RUBENS FERREIRA CAMPOS NETO",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 11,
+    "fields": {
+      "usuario_ptr": 11
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "mateus.rocha@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Mateus Rocha Lucas da Silva",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 12,
+    "fields": {
+      "usuario_ptr": 12
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "mateus.damasceno@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Mateus Felipe de Souza Damasceno",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 13,
+    "fields": {
+      "usuario_ptr": 13
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 14,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "henze.pinto@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "HENZE FERNANDES PINTO",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 14,
+    "fields": {
+      "usuario_ptr": 14
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 15,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "elton.lima@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "ELTON BRUNO DOS SANTOS LIMA",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 15,
+    "fields": {
+      "usuario_ptr": 15
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 16,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "joao.almeida@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "JOAO HELI DE OLIVEIRA ALMEIDA",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 16,
+    "fields": {
+      "usuario_ptr": 16
+    }
+  },
+
+  {
+    "model": "app.categoria",
+    "pk": 2,
+    "fields": {
+      "nome": "ERP"
+    }
+  },
+
+  {
+    "model": "app.tecnologia",
+    "pk": 4,
+    "fields": {
+      "nome": "HTMX",
+      "icone": "fixture/tecnologias/htmx.png"
+    }
+  },
+
+  {
+    "model": "app.projeto",
+    "pk": 2,
+    "fields": {
+      "titulo": "SAFO",
+      "descricao": "Um sistema para gestão operacional e financeira de empresas.",
+      "avaliacao": 4.8,
+      "data_criacao": "2026-03-17T00:00:00Z",
+      "data_finalizacao": null,
+      "data_publicacao": "2026-07-03T00:00:00Z",
+      "categoria_principal": 2,
+      "categorias_secundarias": [],
+      "projetos_favoritos": [],
+      "status": "andamento",
+      "fase": "web",
+      "plataforma": "web",
+      "tecnologias": [1,2,4],
+      "resumo": "SAFO nasce como solução para pequenos e médios empresários que precisam de uma ferramenta para gestão operacional e financeira de seus negócios.",
+      "imagem": "fixture/projetos/safo.png",
+      "repositorio": "https://github.com/tads-cnat/safo",
+      "contato": "andre.almeida@tads.local"
+    }
+  },
+
+  {
+    "model": "app.orientadorprojeto",
+    "pk": 2,
+    "fields": {
+      "orientador": 9,
+      "projeto": 2,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.participacao",
+    "pk": 8,
+    "fields": { "orientando": 10, "projeto": 2, "participacao": true }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 9,
+    "fields": { "orientando": 11, "projeto": 2, "participacao": true }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 10,
+    "fields": { "orientando": 12, "projeto": 2, "participacao": true }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 11,
+    "fields": { "orientando": 13, "projeto": 2, "participacao": true }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 12,
+    "fields": { "orientando": 14, "projeto": 2, "participacao": true }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 13,
+    "fields": { "orientando": 15, "projeto": 2, "participacao": true }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 14,
+    "fields": { "orientando": 16, "projeto": 2, "participacao": true }
+  },
+
+  {
+    "model": "app.avaliar",
+    "pk": 5,
+    "fields": {
+      "nota": 5,
+      "comentario": "Sistema muito útil.",
+      "usuario": 10,
+      "projeto": 2
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 6,
+    "fields": {
+      "nota": 4,
+      "comentario": "Boa organização.",
+      "usuario": 11,
+      "projeto": 2
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 7,
+    "fields": {
+      "nota": 5,
+      "comentario": "Excelente proposta.",
+      "usuario": 12,
+      "projeto": 2
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 8,
+    "fields": {
+      "nota": 5,
+      "comentario": "ERP promissor.",
+      "usuario": 13,
+      "projeto": 2
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 17,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientador",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "alexandre.gomes@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Alexandre Gomes",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientador",
+    "pk": 17,
+    "fields": {
+      "usuario_ptr": 17
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 18,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "thiago.silva@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Thiago Gonsalves Da Silva",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 18,
+    "fields": {
+      "usuario_ptr": 18
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 19,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "sarah.nascimento@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "SARAH BEATRIZ BARBOSA DO NASCIMENTO",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 19,
+    "fields": {
+      "usuario_ptr": 19
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 20,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "mariaclara.melo@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "MARIA CLARA DA SILVA MELO",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 20,
+    "fields": {
+      "usuario_ptr": 20
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 21,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "samuel.silva@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "SAMUEL CHAD DANTAS DA SILVA",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 21,
+    "fields": {
+      "usuario_ptr": 21
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 22,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "carlos.neto@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Carlos Benigno Neto",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 22,
+    "fields": {
+      "usuario_ptr": 22
+    }
+  },
+
+  {
+    "model": "app.categoria",
+    "pk": 3,
+    "fields": {
+      "nome": "Marketplace de Freelancers"
+    }
+  },
+
+  {
+    "model": "app.projeto",
+    "pk": 3,
+    "fields": {
+      "titulo": "Nexo",
+      "descricao": "O Nexo é uma plataforma que conecta clientes e freelancers, simplificando a contratação e o gerenciamento de serviços.",
+      "avaliacao": 4.8,
+      "data_criacao": "2026-03-17T00:00:00Z",
+      "data_finalizacao": null,
+      "data_publicacao": "2026-07-03T00:00:00Z",
+      "categoria_principal": 3,
+      "categorias_secundarias": [],
+      "projetos_favoritos": [],
+      "status": "andamento",
+      "fase": "web",
+      "plataforma": "web",
+      "tecnologias": [
+        1,
+        2,
+        3
+      ],
+      "resumo": "Nós do Nexo observamos que existe uma dificuldade muito grande quando se trabalha como freelancer e quando se é alguém que busca freelancers para realizar um projeto ou atender uma demanda. O sistema atua como uma ponte entre clientes e freelancers, simplificando a contratação e o gerenciamento dos serviços.",
+      "imagem": "fixture/projetos/nexo.png",
+      "repositorio": "https://github.com/tads-cnat/nexo",
+      "contato": "alexandre.gomes@tads.local"
+    }
+  },
+
+  {
+    "model": "app.orientadorprojeto",
+    "pk": 3,
+    "fields": {
+      "orientador": 17,
+      "projeto": 3,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.participacao",
+    "pk": 15,
+    "fields": {
+      "orientando": 18,
+      "projeto": 3,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 16,
+    "fields": {
+      "orientando": 19,
+      "projeto": 3,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 17,
+    "fields": {
+      "orientando": 20,
+      "projeto": 3,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 18,
+    "fields": {
+      "orientando": 21,
+      "projeto": 3,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 19,
+    "fields": {
+      "orientando": 22,
+      "projeto": 3,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.avaliar",
+    "pk": 9,
+    "fields": {
+      "nota": 5,
+      "comentario": "Excelente plataforma.",
+      "usuario": 18,
+      "projeto": 3
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 10,
+    "fields": {
+      "nota": 5,
+      "comentario": "Interface intuitiva.",
+      "usuario": 19,
+      "projeto": 3
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 11,
+    "fields": {
+      "nota": 4,
+      "comentario": "Boa proposta.",
+      "usuario": 20,
+      "projeto": 3
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 12,
+    "fields": {
+      "nota": 5,
+      "comentario": "Muito promissor.",
+      "usuario": 21,
+      "projeto": 3
+    }
+  },
+  {
+    "model": "app.usuario",
+    "pk": 23,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientador",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "gracon.lima@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Gracon Lima",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientador",
+    "pk": 23,
+    "fields": {
+      "usuario_ptr": 23
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 24,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "pedro.ricardo@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Pedro Ricardo",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 24,
+    "fields": {
+      "usuario_ptr": 24
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 25,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "eduardo.medeiros@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Eduardo Medeiros",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 25,
+    "fields": {
+      "usuario_ptr": 25
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 26,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "erick@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Erick",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 26,
+    "fields": {
+      "usuario_ptr": 26
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 27,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "vinicius@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Vinicius",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 27,
+    "fields": {
+      "usuario_ptr": 27
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 28,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "lucas.henrique@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Lucas Henrique",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 28,
+    "fields": {
+      "usuario_ptr": 28
+    }
+  },
+
+  {
+    "model": "app.usuario",
+    "pk": 29,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$fixture$orientando",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "wagner@tads.local",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-07-03T00:00:00Z",
+      "first_name": "",
+      "last_name": "",
+      "nome": "Wagner",
+      "matricula": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "app.orientando",
+    "pk": 29,
+    "fields": {
+      "usuario_ptr": 29
+    }
+  },
+
+  {
+    "model": "app.categoria",
+    "pk": 4,
+    "fields": {
+      "nome": "Educação Financeira"
+    }
+  },
+
+  {
+    "model": "app.tecnologia",
+    "pk": 5,
+    "fields": {
+      "nome": "React",
+      "icone": "fixture/tecnologias/react.png"
+    }
+  },
+  {
+    "model": "app.tecnologia",
+    "pk": 6,
+    "fields": {
+      "nome": "TypeScript",
+      "icone": "fixture/tecnologias/typescript.png"
+    }
+  },
+
+  {
+    "model": "app.projeto",
+    "pk": 4,
+    "fields": {
+      "titulo": "Na Ponta do Lápis",
+      "descricao": "Aplicação voltada à educação financeira e organização de despesas pessoais.",
+      "avaliacao": 4.9,
+      "data_criacao": "2026-03-17T00:00:00Z",
+      "data_finalizacao": null,
+      "data_publicacao": "2026-07-03T00:00:00Z",
+      "categoria_principal": 4,
+      "categorias_secundarias": [],
+      "projetos_favoritos": [],
+      "status": "andamento",
+      "fase": "web",
+      "plataforma": "web",
+      "tecnologias": [
+        5,
+        6,
+        3
+      ],
+      "resumo": "O projeto Na Ponta do Lápis busca incentivar a educação financeira por meio de uma plataforma simples para controle de receitas, despesas e planejamento financeiro.",
+      "imagem": "fixture/projetos/na-ponta-do-lapis.jpg",
+      "repositorio": "https://github.com/tads-cnat/na-ponta-do-lapis",
+      "contato": "gracon.lima@tads.local"
+    }
+  },
+
+  {
+    "model": "app.orientadorprojeto",
+    "pk": 4,
+    "fields": {
+      "orientador": 23,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.participacao",
+    "pk": 20,
+    "fields": {
+      "orientando": 24,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 21,
+    "fields": {
+      "orientando": 25,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 22,
+    "fields": {
+      "orientando": 26,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 23,
+    "fields": {
+      "orientando": 27,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 24,
+    "fields": {
+      "orientando": 28,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+  {
+    "model": "app.participacao",
+    "pk": 25,
+    "fields": {
+      "orientando": 29,
+      "projeto": 4,
+      "participacao": true
+    }
+  },
+
+  {
+    "model": "app.avaliar",
+    "pk": 13,
+    "fields": {
+      "nota": 5,
+      "comentario": "Ferramenta muito útil para organização financeira.",
+      "usuario": 24,
+      "projeto": 4
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 14,
+    "fields": {
+      "nota": 5,
+      "comentario": "Interface simples e intuitiva.",
+      "usuario": 25,
+      "projeto": 4
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 15,
+    "fields": {
+      "nota": 4,
+      "comentario": "Projeto com grande potencial.",
+      "usuario": 26,
+      "projeto": 4
+    }
+  },
+  {
+    "model": "app.avaliar",
+    "pk": 16,
+    "fields": {
+      "nota": 5,
+      "comentario": "Excelente iniciativa.",
+      "usuario": 27,
+      "projeto": 4
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 5,
+    "fields": {
+      "nome": "Animais"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 6,
+    "fields": {
+      "nome": "Adoção"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 7,
+    "fields": {
+      "nome": "ONGs"
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 1,
+    "fields": {
+      "projeto": 1,
+      "categoria": 5
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 2,
+    "fields": {
+      "projeto": 1,
+      "categoria": 6
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 3,
+    "fields": {
+      "projeto": 1,
+      "categoria": 7
+    }
+  },
+
+  {
+    "model": "app.categoria",
+    "pk": 8,
+    "fields": {
+      "nome": "Gestão Empresarial"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 9,
+    "fields": {
+      "nome": "Financeiro"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 10,
+    "fields": {
+      "nome": "Controle de Estoque"
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 4,
+    "fields": {
+      "projeto": 2,
+      "categoria": 8
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 5,
+    "fields": {
+      "projeto": 2,
+      "categoria": 9
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 6,
+    "fields": {
+      "projeto": 2,
+      "categoria": 10
+    }
+  },
+
+  {
+    "model": "app.categoria",
+    "pk": 11,
+    "fields": {
+      "nome": "Freelancer"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 12,
+    "fields": {
+      "nome": "Marketplace"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 13,
+    "fields": {
+      "nome": "Prestação de Serviços"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 14,
+    "fields": {
+      "nome": "Finanças Pessoais"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 15,
+    "fields": {
+      "nome": "Planejamento Financeiro"
+    }
+  },
+  {
+    "model": "app.categoria",
+    "pk": 16,
+    "fields": {
+      "nome": "Controle de Gastos"
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 7,
+    "fields": {
+      "projeto": 3,
+      "categoria": 11
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 8,
+    "fields": {
+      "projeto": 3,
+      "categoria": 12
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 9,
+    "fields": {
+      "projeto": 3,
+      "categoria": 13
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 10,
+    "fields": {
+      "projeto": 4,
+      "categoria": 14
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 11,
+    "fields": {
+      "projeto": 4,
+      "categoria": 15
+    }
+  },
+  {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 12,
+    "fields": {
+      "projeto": 4,
+      "categoria": 16
+    }
+  },
+    {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 13,
+    "fields": {
+      "projeto": 2,
+      "categoria": 16
+    }
+  },
+    {
+    "model": "app.projeto_categorias_secundarias",
+    "pk": 14,
+    "fields": {
+      "projeto": 2,
+      "categoria": 15
+    }
+  }
+]

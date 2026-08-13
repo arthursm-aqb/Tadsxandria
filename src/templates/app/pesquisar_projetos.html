@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Pesquisar Projetos{% endblock title %}
+{% block content %}
+
+{% block extra_head %}
+
+<script>
+document.querySelectorAll('.filter-item').forEach(function (item) {
+  item.addEventListener('change', function () {
+    var grupo = item.dataset.group;
+    var algumMarcado = Array.from(
+      document.querySelectorAll('.filter-item[data-group="' + grupo + '"]')
+    ).some(function (i) { return i.checked; });
+    var allBox = document.querySelector('.filter-all[data-group="' + grupo + '"]');
+    if (allBox) allBox.checked = !algumMarcado;
+  });
+});
+</script>
+
+{% endblock extra_head %}
+
+<div class="max-w-5xl mx-auto px-4 py-5">
+  
+  <!-- Breadcrumb -->
+  <nav class="text-sm mb-4 flex items-center gap-1" aria-label="Breadcrumb">
+    <a href="{% url 'index' %}" class="text-gray-500 hover:text-violet-700 transition-colors">Início</a>
+    <iconify-icon icon="mdi:chevron-right" class="text-gray-400"></iconify-icon>
+    <span class="font-semibold text-green-500">Pesquisa</span>
+  </nav>
+  
+  <!-- ── Search bar ── -->
+  <form class="flex md:gap-10 gap-2 mb-3" method="get" action="{% url 'pesquisar_projetos' %}">
+    <!-- Input + icon -->
+    <div class="flex-1 flex items-center gap-2 bg-white border  rounded-full px-5 py-1 search-input transition-all">
+      <input
+      type="text"
+      name="q"
+      value="{{ request.GET.q|default:'' }}"
+      placeholder="Pesquise um PDS..."
+      class="flex-1 text-sm text-stone-900 outline-none bg-transparent placeholder-gray-400"
+      aria-label="Pesquisar PDS"
+      />
+      <button type="submit" aria-label="Buscar" class="flex justify-center text-stone-900 hover:text-violet-700 transition-colors">
+        <iconify-icon icon="mdi:magnify" class="text-lg"></iconify-icon>
+      </button>
+    </div>
+
+    <!-- Índices dropdown -->
+    <select name="indice" class="flex items-center gap-2 w-auto md:w-60 bg-white border rounded-full px-4 py-2.5 cursor-pointer hover:border-violet-400 transition-colors min-w-44">
+      <option value="todos" class="text-sm text-gray-600 flex-1" {% if request.GET.indice == "todos" or not request.GET.indice %}selected{% endif %}>Todos (Título, descrição)</option>
+      <option value="titulo" class="text-sm text-gray-600 flex-1" {% if request.GET.indice == "titulo" %}selected{% endif %}>Título</option>
+      <option value="descricao" class="text-sm text-gray-600 flex-1" {% if request.GET.indice == "descricao" %}selected{% endif %}>Descrição</option>
+    </select>
+
+    <!-- Buscar button -->
+    <button
+    type="submit"
+    class="px-6 py-2.5 rounded-full text-white text-sm font-bold transition-all hover:opacity-90 active:scale-95 cursor-pointer bg-violet-500"
+    aria-label="Buscar"
+    >
+    Buscar
+  </button>
+</form>
+
+<!-- Histórico -->
+<div class="flex justify-end mb-2">
+  <a href="#" class="flex items-center gap-1.5 text-gray-500 hover:text-violet-700 transition-colors">
+    <iconify-icon icon="mdi:history"></iconify-icon>
+    Histórico de busca
+  </a>
+</div>
+
+<!-- ── Main layout: sidebar + results ── -->
+<div class="flex gap-5 items-start">
+  
+  <!-- ════ LEFT SIDEBAR ════ -->
+  <aside class="w-45 shrink-0 bg-white rounded-2xl border shadow-sm sticky top-4">
+    
+    <!-- Results count -->
+    <div class="p-4">
+      <div class="flex flex-col w-full"></div>
+      <p class="text-sm mb-0.5 border-b">Resultados: <span class="font-bold">{{ projetos|length }}</span></p>
+      <p class="text-sm mb-1 mx-1 my-3">1# (sites)</p>
+    </div>
+    <div class="outline rounded-2xl p-4">
+
+    <!-- Filtros header -->
+    <div class="flex items-center justify-between mb-1 pb-1 border-b">
+      <span class="text-sm font-bold text-gray-700">Filtros</span>
+      <button class="text-xs rounded-full border rounded px-2 py-0.5 hover:border-violet-400 hover:text-violet-700 transition-colors">
+        Opções
+      </button>
+    </div>
+
+    <form method="get" action="{% url 'pesquisar_projetos' %}">
+    {% if request.GET.q %}<input type="hidden" name="q" value="{{ request.GET.q }}">{% endif %}
+    {% if request.GET.indice %}<input type="hidden" name="indice" value="{{ request.GET.indice }}">{% endif %}
+    {% if request.GET.sort %}<input type="hidden" name="sort" value="{{ request.GET.sort }}">{% endif %}
+
+    <!-- Filtrar button -->
+    <button
+      type="submit"
+      class="w-full py-1 rounded-full text-white text-sm font-bold mb-2 transition-all hover:opacity-90 active:scale-95 bg-violet-500"
+      >
+      Filtrar
+    </button>
+  
+  <!-- ── Eixo Temático (Categorias) ── -->
+  <details class="filter-section mb-4" open>
+    <summary class="flex items-center justify-between text-sm font-semibold mb-2">
+      <span>Eixo Temático</span>
+      <iconify-icon icon="mdi:chevron-down"></iconify-icon>
+    </summary>
+    <div class="flex flex-col gap-1.5 mt-2">
+      <label class="flex items-center gap-2 text-xs cursor-default">
+        <input type="checkbox" class="filter-all" data-group="categoria" disabled {% if not categorias_selecionadas %}checked{% endif %} /> Todos
+      </label>
+      {% for categoria in categorias %}
+      <label class="flex items-center gap-2 text-xs cursor-pointer hover:text-violet-700">
+        <input type="checkbox" name="categoria" class="filter-item" data-group="categoria" value="{{ categoria.id }}" {% if categoria.id|stringformat:"s" in categorias_selecionadas %}checked{% endif %} /> {{ categoria.nome }}
+      </label>
+      {% empty %}
+      <span class="text-xs text-gray-400">Nenhuma categoria cadastrada</span>
+      {% endfor %}
+      <a href="#" class="text-xs mt-1 font-semibold hover:underline text-violet-500">Mostrar tudo...</a>
+    </div>
+  </details>
+
+  <!-- ── Plataforma ── -->
+  <details class="filter-section mb-4" open>
+    <summary class="flex items-center justify-between text-sm font-semibold mb-2">
+      <span>Plataforma</span>
+      <iconify-icon icon="mdi:chevron-down"></iconify-icon>
+    </summary>
+    <div class="flex flex-col gap-1.5 mt-2">
+      <label class="flex items-center gap-2 text-xs cursor-default">
+        <input type="checkbox" class="filter-all" data-group="plataforma" disabled {% if not plataformas_selecionadas %}checked{% endif %} /> Todos
+      </label>
+      {% for item in plataformas %}
+      <label class="flex items-center gap-2 text-xs cursor-pointer hover:text-violet-700">
+        <input type="checkbox" name="plataforma" class="filter-item" data-group="plataforma" value="{{ item.valor }}" {% if item.valor in plataformas_selecionadas %}checked{% endif %} /> {{ item.rotulo }}
+      </label>
+      {% empty %}
+      <span class="text-xs text-gray-400">Nenhuma plataforma cadastrada</span>
+      {% endfor %}
+      <a href="#" class="text-xs mt-1 font-semibold hover:underline text-violet-500">Mostrar tudo...</a>
+    </div>
+  </details>
+
+  <!-- ── Status ── -->
+  <details class="filter-section mb-4" open>
+    <summary class="flex items-center justify-between text-sm font-semibold mb-2">
+      <span>Status</span>
+      <iconify-icon icon="mdi:chevron-down"></iconify-icon>
+    </summary>
+    <div class="flex flex-col gap-1.5 mt-2">
+      <label class="flex items-center gap-2 text-xs cursor-default">
+        <input type="checkbox" class="filter-all" data-group="status" disabled {% if not status_selecionados %}checked{% endif %} /> Todos
+      </label>
+      {% for item in status %}
+      <label class="flex items-center gap-2 text-xs cursor-pointer hover:text-violet-700">
+        <input type="checkbox" name="status" class="filter-item" data-group="status" value="{{ item.valor }}" {% if item.valor in status_selecionados %}checked{% endif %} /> {{ item.rotulo }}
+      </label>
+      {% empty %}
+      <span class="text-xs text-gray-400">Nenhum status cadastrado</span>
+      {% endfor %}
+      <a href="#" class="text-xs mt-1 font-semibold hover:underline text-violet-500">Mostrar tudo...</a>
+    </div>
+  </details>
+
+  <!-- ── Tecnologias ── -->
+  <details class="filter-section mb-2" open>
+    <summary class="flex items-center justify-between text-sm font-semibold mb-2">
+      <span>Tecnologias</span>
+      <iconify-icon icon="mdi:chevron-down"></iconify-icon>
+    </summary>
+    <div class="flex flex-col gap-1.5 mt-2">
+      <label class="flex items-center gap-2 text-xs cursor-default">
+        <input type="checkbox" class="filter-all" data-group="tecnologia" disabled {% if not tecnologias_selecionadas %}checked{% endif %} /> Todos
+      </label>
+      {% for tecnologia in tecnologias %}
+      <label class="flex items-center gap-2 text-xs cursor-pointer hover:text-violet-700">
+        <input type="checkbox" name="tecnologia" class="filter-item" data-group="tecnologia" value="{{ tecnologia.id }}" {% if tecnologia.id|stringformat:"s" in tecnologias_selecionadas %}checked{% endif %} /> {{ tecnologia.nome }}
+      </label>
+      {% empty %}
+      <span class="text-xs text-gray-400">Nenhuma tecnologia cadastrada</span>
+      {% endfor %}
+      <a href="#" class="text-xs mt-1 font-semibold hover:underline text-violet-500">Mostrar tudo...</a>
+    </div>
+  </details>
+    </form>
+    </div>
+
+
+</aside>
+
+<!-- ════ RESULTS AREA ════ -->
+<div class="flex-1 min-w-0 border-t-2 border-gray-400 pt-4 border-dashed">
+  
+  <!-- Sort + Pagination bar -->
+  <form class="flex items-center justify-between mb-3" method="get" action="{% url 'pesquisar_projetos' %}">
+    {% if request.GET.q %}<input type="hidden" name="q" value="{{ request.GET.q }}">{% endif %}
+    {% if request.GET.indice %}<input type="hidden" name="indice" value="{{ request.GET.indice }}">{% endif %}
+    {% for valor in categorias_selecionadas %}<input type="hidden" name="categoria" value="{{ valor }}">{% endfor %}
+    {% for valor in plataformas_selecionadas %}<input type="hidden" name="plataforma" value="{{ valor }}">{% endfor %}
+    {% for valor in status_selecionados %}<input type="hidden" name="status" value="{{ valor }}">{% endfor %}
+    {% for valor in tecnologias_selecionadas %}<input type="hidden" name="tecnologia" value="{{ valor }}">{% endfor %}
+    <div class="flex items-center gap-2">
+      <span class="text-gray-500">Ordenar por</span>
+      <select name="sort" onchange="this.form.submit()" class="flex items-center gap-1.5 bg-white border rounded-full px-3 py-1.5 cursor-pointer hover:border-violet-400 transition-colors">
+        <option value="recentes" class="text-gray-700 font-medium" {% if request.GET.sort == "recentes" or not request.GET.sort %}selected{% endif %}>Publicação - Mais Novos</option>
+        <option value="antigos" class="text-gray-700 font-medium" {% if request.GET.sort == "antigos" %}selected{% endif %}>Publicação - Mais Antigos</option>
+        <option value="relevancia" class="text-gray-700 font-medium" {% if request.GET.sort == "relevancia" %}selected{% endif %}>Relevância</option>
+      </select>
+    </div>
+    <div class="flex items-center gap-1.5 text-gray-500">
+      <span>Página</span>
+      <select class="flex items-center gap-1 bg-white border rounded-full pl-4 pr-2 py-1 cursor-pointer hover:border-violet-400 transition-colors">
+        <option class="text-gray-700 font-semibold">1</option>
+      </select>
+      <span>de {{ projetos|length }}</span>
+    </div>
+  </form>
+  
+  {% for projeto in projetos %}
+  <!-- ─── Result Card ─── -->
+  <article class="result-card bg-white rounded-xl p-4 mb-3 border">
+    <div class="flex items-start justify-between gap-2">
+      <div class="flex-1 min-w-0">
+        <!-- Title row -->
+        <div class="flex items-center  gap-2 mb-1 flex-wrap">
+          <h2 class="text-lg font-bold text-gray-900">{{ projeto.titulo }}</h2>
+          {% if projeto.status == "finalizado" %}
+          <iconify-icon icon="mdi:check-circle" class="text-xl text-[#16a34a]" title="Finalizado"></iconify-icon>
+          {% elif projeto.status == "abandonado" %}
+          <iconify-icon icon="mdi:close-circle" class="text-xl text-[#dc2626]" title="Abandonado"></iconify-icon>
+          {% else %}
+          <iconify-icon icon="mdi:progress-clock" class="text-xl text-amber-500" title="Em Andamento"></iconify-icon>
+          {% endif %}
+           {% if projeto.fase == "web" %}
+          <iconify-icon icon="mdi:web" class="text-xl text-violet-500" title="PDS Web"></iconify-icon>
+          {% elif projeto.fase == "distribuido" %}
+          <iconify-icon icon="mdi:lan" class="text-xl text-violet-500" title="PDS Distribuído"></iconify-icon>
+          {% elif projeto.fase == "corporativo" %}
+          <iconify-icon icon="mdi:domain" class="text-xl text-violet-500" title="PDS Corporativo"></iconify-icon>
+          {% endif %}
+        </div>
+        <!-- Authors -->
+        <p class="text-sm mb-0.5  capitalize">
+          <span class="font-semibold">Autores:</span>
+          {% for participacao in projeto.participacao_set.all %}{% if participacao.participacao %}{{ participacao.orientando.nome|default:participacao.orientando.email }}{% if not forloop.last %}; {% endif %}{% endif %}{% empty %}<span class="text-gray-400">Não informado</span>{% endfor %}
+        </p>
+        <p class="text-sm mb-1">
+          <span class="font-semibold">Orientador:</span>
+          {% for orientadorprojeto in projeto.orientadorprojeto_set.all %}{% if orientadorprojeto.participacao %}{{ orientadorprojeto.orientador.nome|default:orientadorprojeto.orientador.email }}{% if not forloop.last %}; {% endif %}{% endif %}{% empty %}<span class="text-gray-400">Não informado</span>{% endfor %}
+        </p>
+        <!-- Description -->
+        <p class="text-sm mb-2.5 mt-1.5 leading-relaxed">
+          {{ projeto.descricao }}
+        </p>
+        <!-- Tech badges -->
+        <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+          {% for tecnologia in projeto.tecnologias.all %}
+          <a href="{% url 'pesquisar_projetos' %}?tecnologia={{ tecnologia.id }}" class="px-2 py-1 rounded-full border border-stone-400 flex items-center gap-1 cursor-pointer ">
+            {% if tecnologia.icone %}
+            <img src="{{ tecnologia.icone.url }}" alt="{{ tecnologia.nome }}" class="w-4 h-4 object-contain" />
+            {% endif %}
+            <span class="text-sm text-gray-600">{{ tecnologia.nome }}</span>
+          </a>
+          {% endfor %}
+        </div>
+        <!-- Meta info -->
+        <div class="flex flex-col gap-1 text-sm w-full">
+          <div class="flex items-center gap-2">
+            <iconify-icon icon="mdi:calendar-outline" class="text-stone-400 shrink-0"></iconify-icon>
+            <span class="text-stone-500 w-30 shrink-0">Publicado em:</span>
+            <span class="text-stone-700 font-medium">{{ projeto.data_publicacao|date:"d \d\e M. \d\e Y" }}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <iconify-icon icon="mdi:link-variant" class="text-stone-400 shrink-0"></iconify-icon>
+            <span class="text-stone-500 w-30 shrink-0">Acesso:</span>
+            <a href="{{ projeto.repositorio }}" target="_blank" rel="noopener" class="text-green-600 underline font-medium hover:text-green-800">{{ projeto.repositorio }}</a>
+          </div>
+           <a href="{% url 'projeto' projeto.pk %}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full text-center transition-colors duration-200 md:w-3/16">
+          Ver detalhes
+        </a>
+        </div>
+      </div>
+      <!-- Heart -->
+      <button class="heart-btn shrink-0 mt-0.5" aria-label="Favoritar" {% if request.user.is_authenticated and request.user in projeto.projetos_favoritos.all %}data-favorito="true"{% endif %}>
+        <iconify-icon icon="{% if request.user.is_authenticated and request.user in projeto.projetos_favoritos.all %}mdi:heart{% else %}mdi:heart-outline{% endif %}" class="text-violet-500 text-xl"></iconify-icon>
+      </button>
+    </div>
+  </article>
+  {% empty %}
+  <div class="bg-white rounded-xl p-8 border text-center text-gray-500">
+    Nenhum projeto encontrado para os critérios selecionados.
+  </div>
+  {% endfor %}
+  
+</div><!-- end results -->
+</div><!-- end main layout -->
+</div>
+{% endblock  %}

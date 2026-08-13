@@ -1,0 +1,38 @@
+{% load static %}
+<form class="w-full max-w-md bg-white" method="POST">
+    {% csrf_token %}
+
+    <h2 class="flex items-center gap-2 font-orbitron font-bold text-[24px] md:text-[30px] mb-4"><img src="{% static 'img/conta.svg' %}" alt="icone da conta" class="h-14 w-14 md:h-20 md:w-20">Crie sua Conta!</h2>
+    {% for campo in campos %}
+
+        <label for="{{ campo.name }}" class="font-exo text-xl pl-3">{{ campo.label }} <small class="text-red-600">*</small></label><br>
+        <input class="border border-gray-400 rounded-full p-2 w-full font-exo" id="{{ campo.name }}" name="{{ campo.name }}" type="{{ campo.type }}" placeholder="Digite seu {{ campo.label|lower }}..." required>
+
+        {% if campo.observacao %}
+            <p class="font-exo pl-3" >{{campo.observacao}}</p>
+        {% endif %}
+        <br><br>
+
+    {% endfor %}
+    
+    {% for tipo in tipos %}
+
+        <label class="font-exo text-xl" for="{{ tipo.name }}"> <input type="radio" value="{{ tipo.name }}" name="tipoPessoa" required>  {{ tipo.name }} </label><br>
+
+    {% endfor %}
+
+    {% if erro %}
+        <p class="text-red-600 mb-4">{{ erro }}</p>
+    {% endif %}
+     <br>
+    <button type="submit" class="transition-all duration-300 bg-[#63B536] text-white py-2 px-4 rounded-full w-full hover:bg-[#205503] font-exo font-bold mb-4 text-2xl">CRIAR CONTA</button>
+    <br><br>
+
+    <hr class="border-1 border-black w-1/2 mx-auto">
+
+    <p class="text-center font-exo pt-3 text-xl">Possui uma conta?</p>
+
+    <p class="text-[#89449F] font-exo font-semibold text-center underline text-xl"><a href="{% url 'login' %}">Faça login!</a></p>
+
+
+</form>

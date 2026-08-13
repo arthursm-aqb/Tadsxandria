@@ -1,0 +1,97 @@
+{% load static %}
+<footer class="bg-offwhite border-t border-stone-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row gap-8 md:gap-6 text-violet-500">
+      
+      <!-- Column 1: Logos + Socials -->
+      <div class="flex flex-col gap-4 shrink-0">
+        <!-- Logos row -->
+        <div class="flex items-center gap-3">
+          <!-- Lighthouse logo -->
+          <div class="w-25 rounded-full flex items-center justify-center shrink-0">
+            <img src="{% static 'img/logo.png' %}" alt="Logo da TADSxandria">
+          </div>
+          <!-- IFRN logo block -->
+          <div class="w-55 h-20 flex items-center gap-1.5">
+            <img src="{% static 'img/ifrn_logo.png' %}" alt="Logo do IFRN">
+          </div>
+        </div>
+        
+        <!-- Social icons -->
+        <div class="flex items-center gap-3">
+          <a href="#" class="flex items-center justify-center text-3xl rounded-full p-2 hover:bg-gray-200" aria-label="Facebook">
+            <iconify-icon icon="mdi:facebook"></iconify-icon>
+          </a>
+          <a href="#" class="flex items-center justify-center text-3xl rounded-full p-2 hover:bg-gray-200" aria-label="X / Twitter">
+            <iconify-icon icon="ri:twitter-x-fill"></iconify-icon>
+          </a>
+          <a href="#" class="flex items-center justify-center text-3xl rounded-full p-2 hover:bg-gray-200" aria-label="GitHub">
+            <iconify-icon icon="mdi:github"></iconify-icon>
+          </a>
+          <a href="#" class="flex items-center justify-center text-3xl rounded-full p-2 hover:bg-gray-200" aria-label="Instagram">
+            <iconify-icon icon="mdi:instagram"></iconify-icon>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Vertical divider -->
+      <div class="hidden md:block border-l-2 border-violet-500 align-self-stretch"></div>
+      
+      <!-- Column 2: About -->
+      <div class="md:w-62 shrink-0">
+        <p class="font-semibold text-lg uppercase mb-2.5">TADSxandria Biblioteca</p>
+        <p class="text-sm leading-relaxed">
+          A dedicação ao conhecimento e à preservação de saberes.
+        </p>
+      </div>
+      
+      <!-- Column 3: Contact -->
+      <div class="md:ms-15 shrink-0">
+        <p class="font-semibold text-lg uppercase mb-2.5">Contato</p>
+        <div class="flex flex-col gap-2.5">
+          <a href="mailto:tadsxandria@hotmail.com" class="flex items-center gap-1">
+            <iconify-icon icon="mdi:email-outline"></iconify-icon>
+            E-mail: tadsxandria@hotmail.com
+          </a>
+          <a href="tel:+558499999999" class="flex items-center gap-1">
+            <iconify-icon icon="mdi:phone-outline"></iconify-icon>
+            Tel: (84) 9999-9999
+          </a>
+          <span class="flex items-center gap-1" style="cursor:default;">
+            <iconify-icon icon="mdi:clock-outline"></iconify-icon>
+            Segunda a Sexta: 7h às 17h
+          </span>
+        </div>
+      </div>
+      
+      <!-- Column 4: Quick links -->
+      <div class="md:ml-auto">
+        <p class="font-semibold text-lg uppercase">Links Rápidos</p>
+        <div class="flex flex-col gap-1.5">
+          <a href="{% url 'pesquisar_projetos' %}?sort=recentes" class="flex items-center gap-1 p-2">
+            <iconify-icon icon="mdi:file-document-outline" class="text-xl"></iconify-icon>
+            Recentes PDS's
+          </a>
+          <a href="/" class="opacity-50 flex items-center gap-1 p-2 " aria-disabled="true">
+            <iconify-icon icon="mdi:school-outline" class="text-xl"></iconify-icon>
+            Recentes TCC's
+          </a>
+          <a href="/" class="opacity-50 flex items-center gap-1 p-2 " aria-disabled="true">
+            <iconify-icon icon="mdi:heart-outline" class="text-xl"></iconify-icon>
+            Meus Favoritos
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Bottom bar -->
+  <div class="text-violet-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <p class="text-center text-[0.8rem]">
+        © 2025 TB – Tadsxandria Biblioteca. Todos os direitos reservados. | Desenvolvido por Ana Barbosa, Arthur Mariz, Arthur Fontenele, Beatriz Borba, Erick Job,  Gustavo Dias, Miguel da Hora, Raquel Martiniano.
+      </p>
+    </div>
+  </div>
+</footer>

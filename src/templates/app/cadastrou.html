@@ -1,0 +1,47 @@
+{% extends "base_cadastro.html" %}
+{% load static %}
+
+{% block title %}Cadastro de Conta{% endblock %}
+
+{% block content %}
+
+<div class="flex flex-col md:flex-row min-h-screen font-share overflow-x-hidden">
+
+    <!-- LADO ESQUERDO -->
+    <div class="w-full md:w-1/2 flex flex-col justify-between p-6 md:p-8 bg-gradient-to-b from-[#4A00B4] to-[#701783] relative">
+
+        <header class="pl-2 md:pl-8">
+
+            <img src="{% static 'img/torre.svg' %}" class="w-10 h-10 md:w-14 md:h-14 absolute top-[140px] md:top-[120px] left-[180px] md:left-[304px]">
+
+            <h1 class="font-share font-bold text-[35px] md:text-[50px] text-white pt-24 md:pt-32 leading-tight">BEM-VINDO(A), <br>@{{ nome }} </h1>
+
+        </header>
+
+        <footer class="pl-2 md:pl-8 mt-10 md:mt-0">
+            <p class="font-orbitron font-semibold text-white">TADSXANDRIA BIBLIOTECA</p>
+        </footer>
+
+    </div>
+
+    <!-- LADO DIREITO -->
+    <div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 bg-[#FFFFFB]">
+
+        <section>
+            <!-- PRECISA REVER ISSO -->
+            <div class="bg-[#00E82A] p-6 rounded-xl flex items-center justify-between w-[500px]">
+                <p class="text-white font-semibold  font-exo text-2xl pl-20" >CADASTRADO <br> COM SUCESSO!</p>
+                <img class="w-20 h-20 ml-6 mr-20" src="{% static 'img/marcasimplificadaSemFundo.svg' %}" alt="marca da torre TADSXANDRIA versão sem fundo">
+            </div>
+
+            <br><br>
+
+            <p class="text-[#00E82A] font-exo font-semibold text-center text-3xl ">CLIQUE AQUI</p> <br>
+            <a href="{% url 'login' %}" class="flex justify-center"><img src="{% static 'img/setaVerde.svg' %}" alt="seta verde" class="w-[200px] h-[200px]"></a>
+        </section>
+
+    </div>
+
+</div>
+
+{% endblock %}

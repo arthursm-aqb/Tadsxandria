@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Início{% endblock %}
+{% block content %}
+
+<section class="bg-offwhite">
+
+    <!-- ════ HERO ════ -->
+    <div class="bg-gradient-to-b from-violet-100 to-white w-full py-16 lg:py-20 xl:py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 xl:px-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-12 xl:gap-16">
+
+            <img src="{% static 'img/Group 24.svg' %}" class="w-40 lg:w-48 xl:w-56 shrink-0" alt="Logo Tadsxandria"> <!--Imagem logo-->
+
+            <div class="flex flex-col">
+
+                <h1 class="font-orbitron text-purple text-3xl lg:text-4xl xl:text-5xl font-bold mb-8 lg:mb-10 upper">Tadsxandria Biblioteca</h1>
+
+                <div class="flex flex-col gap-6 lg:gap-7">
+
+                    <div class="flex items-start gap-4 lg:gap-5">
+                        <img src="{% static 'img/guidance_library.svg' %}" class="w-7 lg:w-8 shrink-0 mt-1" alt="">
+                        <h3 class="font-exo text-purple text-lg lg:text-xl xl:text-2xl">Tadsxandria Biblioteca é um espaço ao conhecimento e à descoberta.</h3>
+                    </div>
+
+                    <div class="flex items-start gap-4 lg:gap-5">
+                        <img src="{% static 'img/solar_library-linear.svg' %}" class="w-7 lg:w-8 shrink-0 mt-1" alt="">
+                        <h3 class="font-exo text-purple text-lg lg:text-xl xl:text-2xl">Com um acervo variado e atualizado, oferece livros, materiais digitais e um ambiente acolhedor para estudo, pesquisa e leitura.</h3>
+                    </div>
+
+                    <div class="flex items-start gap-4 lg:gap-5">
+                        <img src="{% static 'img/icons8_library.svg' %}" class="w-7 lg:w-8 shrink-0 mt-1" alt="">
+                        <h3 class="font-exo text-purple text-lg lg:text-xl xl:text-2xl">Aqui, cada visita é uma oportunidade de aprender e crescer.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════ BREADCRUMB ════ -->
+
+    <!-- ════ PROJETOS MAIS BEM AVALIADOS ════ -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 xl:px-16 my-8 lg:mt-10">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h2 class="font-orbitron text-3xl lg:text-4xl xl:text-5xl font-bold">Projetos mais bem avaliados</h2>
+            <a href="{% url 'pesquisar_projetos' %}" class="bg-green-main text-white px-6 lg:px-7 py-2.5 rounded-full text-base lg:text-lg font-exo flex items-center gap-3 w-fit hover:opacity-90 transition-opacity">
+                Todos os PDS
+                <img src="{% static 'img/gg_arrow-up-o.png' %}" class="w-5" alt="">
+            </a>
+        </div>
+
+        <!--Cards PDS-->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-10">
+            {%for avaliacao in avaliacoes%}
+                <div class="bg-white border border-gray-300 rounded-lg p-6 lg:p-7 flex flex-col">
+                    <img src="{{ avaliacao.imagem.url }}" class="w-full h-[160px] rounded  border border-gray-300" alt="">
+                    <h3 class="font-orbitron text-purple text-xl lg:text-2xl mt-5">{{ avaliacao.titulo }}</h3>
+                    <h4 class="font-exo text-base lg:text-lg mt-2 flex-1 line-clamp-2">{{ avaliacao.descricao }}</h4>
+                    <h4 class="font-exo text-gray-400 text-sm lg:text-base mt-6">{{ avaliacao.data_publicacao }}</h4>
+
+                    <a href="{% url 'projeto' avaliacao.pk %}" class="bg-green-main text-white px-8 py-2.5 rounded-full text-lg lg:text-xl font-exo flex items-center justify-center gap-3 w-fit mt-6 hover:opacity-90 transition-opacity">
+                        Saiba Mais
+                        <img src="{% static 'img/gg_arrow-up-o.png' %}" class="w-5" alt="">
+                    </a>
+
+                    <div class="flex items-center gap-2 mt-4 flex-wrap"> <!--Baixar PT e EN-->
+                        <a aria-disabled="true" class="opacity-50 font-exo text-green-main text-sm lg:text-base underline">PDF PT</a>
+                        <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                        <a aria-disabled="true" class="opacity-50 font-exo text-green-main text-sm lg:text-base underline">PDF EN</a>
+                        <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+
+{% comment %}
+    <!-- ════ TCC'S MAIS BEM AVALIADOS ════ -->
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 xl:px-16 mt-16 lg:mt-20">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h2 class="font-orbitron text-3xl lg:text-4xl xl:text-5xl font-bold">TCC's mais bem avaliados</h2>
+            <a href="" class="bg-green-main text-white px-6 lg:px-7 py-2.5 rounded-full text-base lg:text-lg font-exo flex items-center gap-3 w-fit hover:opacity-90 transition-opacity">
+                Todos os TCC
+                <img src="{% static 'img/gg_arrow-up-o.png' %}" class="w-5" alt="">
+            </a>
+        </div>
+
+        <!--Cards TCC-->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-10 pb-16 lg:pb-20">
+
+            <div class="bg-white border border-gray-300 rounded-lg p-6 lg:p-7 flex flex-col">
+                <img src="{% static 'img/image 16.svg' %}" class="w-full rounded" alt="">
+                <h3 class="font-orbitron text-purple text-xl lg:text-2xl mt-5">Titulo do TCC</h3>
+                <h4 class="font-exo text-base lg:text-lg mt-2">Descrição do projeto</h4>
+                <h4 class="font-exo text-gray-400 text-sm lg:text-base mt-6">Data de publicação</h4>
+
+                <a href="" class="bg-green-main text-white px-8 py-2.5 rounded-full text-lg lg:text-xl font-exo flex items-center justify-center gap-3 w-fit mt-6 hover:opacity-90 transition-opacity">
+                    Saiba Mais
+                    <img src="{% static 'img/gg_arrow-up-o.png' %}" class="w-5" alt="">
+                </a>
+
+                <div class="flex items-center gap-2 mt-4 flex-wrap"> <!--Baixar PT e EN-->
+                    <h5 class="font-exo text-green-main text-sm lg:text-base underline">PDF PT</h5>
+                    <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                    <h5 class="font-exo text-green-main text-sm lg:text-base underline">PDF EN</h5>
+                    <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-300 rounded-lg p-6 lg:p-7 flex flex-col">
+                <img src="{% static 'img/image 16.svg' %}" class="w-full rounded" alt="">
+                <h3 class="font-orbitron text-purple text-xl lg:text-2xl mt-5">Titulo do TCC</h3>
+                <h4 class="font-exo text-base lg:text-lg mt-2">Descrição do projeto</h4>
+                <h4 class="font-exo text-gray-400 text-sm lg:text-base mt-6">Data de publicação</h4>
+
+                <a href="" class="bg-green-main text-white px-8 py-2.5 rounded-full text-lg lg:text-xl font-exo flex items-center justify-center gap-3 w-fit mt-6 hover:opacity-90 transition-opacity">
+                    Saiba Mais
+                    <img src="{% static 'img/gg_arrow-up-o.png' %}" class="w-5" alt="">
+                </a>
+
+                <div class="flex items-center gap-2 mt-4 flex-wrap"> <!--Baixar PT e EN-->
+                    <h5 class="font-exo text-green-main text-sm lg:text-base underline">PDF PT</h5>
+                    <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                    <h5 class="font-exo text-green-main text-sm lg:text-base underline">PDF EN</h5>
+                    <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                </div>
+            </div>
+
+            <div class="bg-white border border-gray-300 rounded-lg p-6 lg:p-7 flex flex-col">
+                <img src="{% static 'img/image 16.svg' %}" class="w-full rounded" alt="">
+                <h3 class="font-orbitron text-purple text-xl lg:text-2xl mt-5">Titulo do TCC</h3>
+                <h4 class="font-exo text-base lg:text-lg mt-2">Descrição do projeto</h4>
+                <h4 class="font-exo text-gray-400 text-sm lg:text-base mt-6">Data de publicação</h4>
+
+                <a href="" class="bg-green-main text-white px-8 py-2.5 rounded-full text-lg lg:text-xl font-exo flex items-center justify-center gap-3 w-fit mt-6 hover:opacity-90 transition-opacity">
+                    Saiba Mais
+                    <img src="{% static 'img/gg_arrow-up-o.png' %}" class="w-5" alt="">
+                </a>
+
+                <div class="flex items-center gap-2 mt-4 flex-wrap"> <!--Baixar PT e EN-->
+                    <h5 class="font-exo text-green-main text-sm lg:text-base underline">PDF PT</h5>
+                    <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                    <h5 class="font-exo text-green-main text-sm lg:text-base underline">PDF EN</h5>
+                    <img src="{% static 'img/material-symbols_link.svg' %}" class="w-4" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endcomment %}
+
+</section>
+{% endblock content %}
+
+<!--{% for projeto in projetos}
+        <img {{projeto.imagem}}
+        <h3> {{projeto.titulo}} </h3>
+-->

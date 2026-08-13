@@ -1,0 +1,157 @@
+{% extends "base_logado.html" %}
+
+{% load static %}
+
+{% block title %}Cadastrar Projeto{% endblock %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#categoria_proj').select2({
+        tags: true,
+        placeholder: 'Selecione ou digite uma categoria',
+        width: '100%'
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+    <div class="flex gap-40 bg-[#FEFEF9] p-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="">
+            <div class="">
+                <h2 class="italic font-exo2 text-2xl ml-5">Painel de Usuário</h2>
+                <div class="flex flex-col justify-between h-64 w-60 gap-4 mt-4 p-4 ">
+                    <figure class="flex justify-content-between">
+                        <img class="w-7 h-7 ml-3" src="{% static 'img/perfil.svg' %}" alt="Perfil">
+                        <a href="" class="font-exo2 ml-1">Meu perfil</a>
+                    </figure>
+                    <hr class="border-t-2 border-gray-300">
+                    <figure class="flex justify-content-between ">
+                        <img class="w-7 h-7 ml-3" src="{% static 'img/gerencias.svg'%}" alt="Papelada">
+                        <a href="" class="font-exo2 ml-1">Gerênciar projetos</a>
+                        
+                    </figure>
+                    <hr class="border-t-2 border-gray-300">
+                    <figure class="flex justify-content-between">
+                        <img class="w-7 h-7 ml-3" src="{% static 'img/favoritar.svg' %}" alt="Favoritos">
+                        <a href="" class="font-exo2 ml-1">Favoritos</a>                        
+                    </figure>
+                    <hr class="border-t-2 border-gray-300">
+                    <figure class="flex justify-content-between text-[#ffffff] border-2 border-purple-500 bg-[#AE85E5] rounded-full pt-2 pb-2 pr-15">
+                        <img class="w-7 h-7 ml-3 " src="{% static 'img/upload.svg' %}" alt="Upload">
+                        <a href="" class="font-exo2 mt-0.5 ml-1"><b>Submissões</b></a>
+                        
+                    </figure>
+
+                    <hr class="border-t-2 border-gray-300 mb-20">
+                    <br class="mb-20">
+                    
+                    <figure class="flex justify-content-between mt-40">
+                        <img class="w-7 h-7 ml-5" src="{% static 'img/engranagem.svg' %}" alt="Engrenagem ">
+                        <a href="" class="font-exo2 mt-0.5 ml-1">Opções</a>
+                    </figure>
+                    <hr class="border-t-2 border-gray-300">
+
+                </div>
+                
+            </div>
+        </section>
+        
+    
+        <section class="mr-80 mb-8">
+    
+            <p class="mb-2 mr-10">
+                <a href="" class="font-exo2">Início ></a> 
+                <a href="" class="font-exo2">Painel de Usuário ></a>
+                <a href="" class="font-exo2 text-[#63B536]"><b>Submissões</b></a>
+            </p>
+            <hr class="border-t-2 border-gray-300">
+
+            <div class="flex-initial  box-border h-full w-200 shadow-[0_3px_10px_0.1px_rgba(0,0,0,0.1)] bg-[#ffffff] p-4 mt-4">
+                
+                <h2 class="font-exo2 text-2xl mt-3 mb-5"><b>Submissão de Projeto</b></h2>
+                <hr class="border-t-2 border-gray-300">
+                
+                <form class="flex flex-col mt-5 w-89" method="POST">
+                    {% csrf_token %}
+                    <label class="font-exo2"><b>Título</b></label> 
+                    <input type="text" name= "titulo_proj" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-5 w-89">
+                    {% if erros.erro_titulo %}
+                        <p class="text-red-600 mb-4">{{ erros.erro_titulo }}</p>
+                    {% endif %}
+                    
+                     
+                    <label class="font-exo2"><b>Plataforma</b></label> 
+                    <!-- <input type="text" name= "plataforma_proj" list="lista-plataformas" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-5 w-89"> -->
+                    <select id="plataforma_proj"name="plataforma_proj" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-4 w-89" >
+                        {%for plataforma in plataformas %}
+                            <option value="{{plataforma.valor}}">{{plataforma.valor}}</option>
+                        {%endfor%}
+                    </select>
+                    
+                    {% if erros.erro_plataforma %}
+                        <p class="text-red-600 mb-4">{{ erros.erro_plataforma }}</p>
+                    {% endif %}
+
+                     
+                    <label class="font-exo2"><b>Data de criação</b></label> 
+                    <input type="text" name= "data_criacao_proj" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0SS,0,0.1)] mb-5 w-89">
+                    {% if erros.erro_data_criacao %}
+                        <p class="text-red-600 mb-4">{{ erros.erro_data_criacao }}</p>
+                    {% endif %}
+
+
+                     
+                    <label class="font-exo2"><b>Colaboradores:</b> </label> 
+                    <input type="" name= "colaboradores_proj" placeholder="Digite os emails dos colaboradores do projeto" list="lista-orientandos" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-5 pb-10 w-89">
+                    <!-- <datalist type="text" id="lista-orientandos" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-4 pr-40" name="categoria_proj" id="">
+                        {%for orientando in orientandos %}
+                            <option value="{{orientando}}">
+                        {%endfor%}
+                    </datalist> -->
+                    {% if erros.erro_colaboradores %}
+                        <p class="text-red-600 mb-4">{{ erros.erro_colaboradores }}</p>
+                    {% endif %}
+
+
+                     
+                    <label class="font-exo2"><b>Orientador:</b> </label> 
+                    <input type="text" name= "orientador_proj" placeholder="Digite o email do orientador do projeto" class="border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-5 w-89">
+                    {% if erros.erro_orientador %}
+                        <p class="text-red-600 mb-4">{{ erros.erro_orientador }}</p>
+                    {% endif %}
+                    
+                     
+                    <label class="font-exo2"><b>Categoria</b></label> 
+                    
+                    <select id="categoria_proj" name="categoria_proj" class="js-example-tags border-1 border-gray-900 shadow-[0_3px_4px_0.1px_rgba(0,0,0,0.1)] mb-8 w-89!" >
+                        {%for categoria in categorias %}
+                            <option value="{{categoria}}">{{categoria}}</option>
+                        {%endfor%}
+                    </select>
+                    {% if erros.erro_categoria %}
+                        <p class="text-red-600 mb-4">{{ erros.erro_categoria }}</p>
+                    {% endif %}
+
+                    <div class="flex mt-5 gap-3">
+                        
+                        <button type="submit" class="flex bg-[#63B536] hover:bg-[#286D03] transition duration-all rounded-xl pl-2 pr-2 pt-2 ml-2 text-[#ffffff] font-exo2"> <img class="h-6 w-6" src="{% static 'img/upload.svg' %}" alt="Submeter"> <b class="ml-2">Submeter Projeto</b></button>
+                        
+                        <button type="button" class="flex bg-[#DD1B1B] hover:bg-[#800101] transition duration-all rounded-xl pr-10 pt-2 pb-2 pl-2  ml-2 text-[#ffffff] font-exo2"><img class="h-6 w-6" src="{% static 'img/cancelar.svg' %}" alt="Cancelar"><b class="ml-2">Cancelar</b></button>
+                
+                    </div>
+
+                <!-- class="flex bg-[#DD1B1B] hover:bg-[#800101] transition duration-all rounded-xl pr-10 pt-2 pb-2 pl-2 ml-10" -->
+                <!-- class="flex bg-[#63B536] hover:bg-[#286D03] transition duration-all rounded-xl p-2" -->
+                    
+                    
+                
+                    
+            </div>
+        </section>
+    </div>    
+{% endblock %}

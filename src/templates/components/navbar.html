@@ -1,0 +1,108 @@
+{% load static %}
+<header>
+  <!-- Top bar: logo + controls + auth -->
+  <div class="bg-offwhite border-b border-stone-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between p-3 gap-4">
+        
+        <!-- Logo -->
+        <a href="{% url 'index' %}" class="flex items-center gap-2 shrink-0" aria-label="TADSxandria – Página inicial">
+          <img class="w-80" src="{% static 'img/logotipo.png' %}" alt="TADSxandria">
+        </a>
+        
+        <!-- Right controls -->
+        <div class="flex items-center gap-2.5 ml-auto">
+          
+          <!-- Font size controls -->
+          <div class="hidden sm:flex items-center justify-center gap-2.5 py-1">
+            <button class="font-bold hover:cursor-pointer" aria-label="Diminuir fonte">A</button>
+            <button class="font-bold hover:cursor-pointer" aria-label="Fonte normal">A-</button>
+            <button class="font-bold hover:cursor-pointer" aria-label="Aumentar fonte">A+</button>
+          </div>
+          
+          <!-- Contrast toggle -->
+          <button class="flex items-center justify-center w-14 h-14 mr-5 rounded-full" aria-label="Alternar contraste">
+            <iconify-icon icon="mdi:circle-half-full" class="text-violet-500 text-3xl hover:cursor-pointer"></iconify-icon>
+          </button>
+          
+          <!-- User icon -->
+          <div class="flex items-center justify-center w-14 h-14 rounded-full" aria-label="Usuário">
+            <iconify-icon icon="mdi:account-circle" class="text-violet-500 text-3xl hover:cursor-pointer"></iconify-icon>
+          </div>
+          
+          <!-- Auth links -->
+          <span class="text-gray-400 hidden sm:inline">
+            {% if not request.user.is_authenticated %}
+            <a href="{% url 'login' %}" class="underline text-green-500">Entre</a>
+            <span class="mx-1 text-gray-400">ou</span>
+            <a href="{% url 'cadastrar_conta' %}" class="underline text-green-500">Cadastra-se</a>
+            {% else %}
+            <span class="mx-1 text-gray-400">{{ request.user.nome }}</span>
+            <span class="mx-1 text-gray-400">|</span>
+            <a href="" class="underline text-green-500 mx-1">Painel do usuário</a>
+            <a href="" class="underline text-green-500">Sair</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bottom bar: search + menu -->
+  <nav class="bg-offwhite border-b border-stone-400" aria-label="Menu principal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-14 h-11">
+        
+        <!-- Search bar -->
+        <form
+              class="relative flex items-center gap-2 w-lg"
+              method="get"
+              action="{% url 'pesquisar_projetos' %}"
+          >
+              <iconify-icon
+                  icon="mdi:magnify"
+                  class="absolute left-3 text-gray-500 text-lg">
+              </iconify-icon>
+
+              <input
+                  type="text"
+                  name="q"
+                  value="{{ request.GET.q }}"
+                  placeholder="Busque por um projeto..."
+                  class="border border-gray-200 rounded-full py-1 pl-10 flex-1 shadow"
+              />
+
+              <button
+                  type="submit"
+                  class="absolute right-3 top-2">
+                  <iconify-icon
+                      icon="mdi:filter-variant"
+                      class="text-gray-500 text-lg">
+                  </iconify-icon>
+              </button>
+          </form>
+        
+        <!-- Nav items -->
+        <div class="hidden sm:flex items-center gap-21">
+          <a href="{% url 'pesquisar_projetos' %}?sort=recentes" class="flex items-center gap-1 hover:text-violet-500">
+            <iconify-icon icon="mdi:history" class="text-xl"></iconify-icon>
+            Recentes
+          </a>
+          <a href="/" class="opacity-50 flex items-center gap-1 hover:text-violet-500" aria-disabled="true">
+            <iconify-icon icon="mdi:help-circle-outline" class="text-xl"></iconify-icon>
+            Ajuda
+          </a>
+          <a href="/" class="opacity-50 flex items-center gap-1 hover:text-violet-500" aria-disabled="true">
+            <iconify-icon icon="mdi:person-box-outline" class="text-xl"></iconify-icon>
+            Contato
+          </a>
+        </div>
+        
+        <!-- Mobile hamburger -->
+        <button class="sm:hidden ml-auto nav-icon-btn" aria-label="Abrir menu">
+          <iconify-icon icon="mdi:menu" class="text-xl"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

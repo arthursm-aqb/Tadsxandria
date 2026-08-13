@@ -1,0 +1,42 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #fefef9;
+  font-family: 'Exo 2', sans-serif;
+}
+
+main {
+  flex-grow: 1;
+}
+
+#metadados th, td {
+  border: 2px #63B536 solid;
+  padding: 12px;
+  text-align: left;
+  color: #63B536;
+
+}
+
+#metadados td{
+  color: black;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 5% center; /* Position icon on the right */
+  
+  padding-right: 30px;
+}
+
+select:open {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6l-6 6z"/></svg>');
+}

@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Projeto - {{projeto.titulo}} {% endblock %}
+
+{% block content %} 
+<div class="max-w-7xl mx-auto w-full px-4">
+
+<!-- Migalha de pão -->
+<div class=" mt-6">
+    <span><a href="{% url 'index' %}" class="hover:underline">Início</a> > <a href="{% url 'pesquisar_projetos' %}" class="hover:underline">Pesquisa</a> > <span class="text-green-main">{{projeto.titulo|capfirst}}</span></span>
+</div>
+
+<!-- Metadados Projeto -->
+<div class="flex">
+    <!-- Conteiner de dados do projeto -->
+    <div class=" mt-10 w-1/2 h-140">
+        <!-- Título do Projeto, Imagem e links -->
+        <div>
+            <!-- Título -->
+            <div class="mb-2 mx-auto !font-orbitron font-bold text-4xl">
+                <h1>{{projeto.titulo|capfirst}}</h1>
+            </div>
+
+            <!-- Imagem do projeto -->
+            <div class="w-full h-auto mx-auto">
+                {% if projeto.imagem %}
+                    <img src="{{ projeto.imagem.url }}" alt="Imagem do projeto {{projeto.titulo}}" class="w-full h-auto rounded-lg  border border-gray-300">
+                {% else %}
+                    <img src="{% static 'img/placeholder.jpg' %}" alt="Imagem padrão para projetos sem imagem" class="w-full h-auto rounded-lg  border border-gray-300">
+                {% endif %}
+            </div>
+
+            <!-- Links -->
+            <div class="mt-6 h-17 w-full gap-3 flex items-center justify-evenly text-sm ">
+
+                <div aria-disabled="true" class="opacity-50 border border-purple-main shadow-sm rounded-lg bg-purple-main w-40 h-11 text-white flex items-center justify-evenly cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 active:bg-purple-700">
+                    <iconify-icon icon="mdi:book-open-blank-variant-outline" class="text-3xl mb-1"></iconify-icon>
+                    <span class="!font-orbitron font-bold">Ler on-line</span>
+                </div>
+
+                <div aria-disabled="true" class="opacity-50 border border-gray-main shadow-sm rounded-lg bg-gray-main w-45 h-11 flex items-center justify-evenly cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 active:bg-purple-700">
+                    <iconify-icon icon="mdi:download" class="text-3xl text-blue-main"></iconify-icon>
+                    <span class="!font-orbitron font-bold">PDF, 0.0 MB</span>
+                </div>
+
+                <div class="border border-gray-main shadow-sm rounded-lg bg-white w-45 h-11 flex items-center justify-evenly cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 active:bg-purple-700">
+                    <iconify-icon icon="mdi:folder" class="text-3xl text-yellow-main"></iconify-icon>
+                    <span class="!font-orbitron font-bold"><a href="{{projeto.repositorio}}">Repositório</a></span>
+                </div>
+
+                <div aria-disabled="true" class="opacity-50 border border-gray-main shadow-sm rounded-lg bg-white w-45 h-11 flex items-center justify-evenly cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 active:bg-purple-700">
+                    <iconify-icon icon="mdi:cards-heart-outline" class="text-3xl text-red-main"></iconify-icon>
+                    <span class="!font-orbitron font-bold">Favoritar</span>
+                </div>
+
+                <div onclick="copyObjectUrl(window.location.origin + '{% url 'projeto' projeto.id %}') " class="border border-gray-main shadow-sm rounded-lg bg-white w-12 h-11 flex items-center justify-evenly cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 active:bg-purple-700">
+                    <iconify-icon icon="mdi:share-variant-outline" class="text-3xl text-purple-main"></iconify-icon>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Tabela de dados -->
+    <div class="ml-5 mt-10 w-full">
+        <div class="mb-2 mx-auto !font-orbitron font-bold text-2xl">
+            <h1>Plataforma: {{projeto.plataforma|capfirst}}</h1>
+        </div>
+
+        <table class="border-separate border-spacing-2" id="metadados">
+
+            <tr>
+                <th class="border">Colaboradores</th>
+                <td class="border text-left p-5">
+                    {% for nome in orientandos %}
+                        {{nome.orientando.nome|capfirst}}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+
+            <tr>
+                <th class="border">Orientadores</th>
+                <td class="border text-left p-5">{{orientador.orientador.nome|capfirst}}</th>
+            </tr>
+
+             <tr>
+                <th class="border">Data de criação</th>
+                <td class="border text-left p-5">{{projeto.data_criacao|date:"d/m/Y"}}</th>
+            </tr>
+
+            <tr>
+                <th>Data de finalização</th>
+                <td class="border text-left p-5">
+                    {% if projeto.data_finalizacao %}
+                        {{projeto.data_finalizacao|date:"d/m/Y"}}
+                    {% else %}
+                        -
+                    {% endif%}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Status</th>
+                <td class="border text-left p-5">{{projeto.status|capfirst}}</td>
+            </tr>
+
+            <tr>
+                <th>Descrição</th>
+                <td class="border text-left p-5">{{projeto.descricao|capfirst}}</td>
+            </tr>
+
+            <tr>
+                <th>Contato</th>
+                <td class="border text-left p-5">
+                    {% for email in projeto.contato %}
+                        {{email}}<br>
+                    {% endfor %}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Categoria</th>
+                <td class="border text-left p-5">{{projeto.categoria_principal|capfirst}}</td>
+            </tr>
+
+            <tr>
+                <th>Subcategoria</th>
+                <td class="border text-left p-5">
+                    {% if projeto.categorias_secundarias.all %}
+                        {% for categoria in projeto.categorias_secundarias.all %}
+                            {{categoria.nome|capfirst}}<br>
+                        {% endfor %}
+                    {% else %}
+                        -
+                    {% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Fase atual</th>
+                <td class="border text-left p-5">{{projeto.fase|capfirst}}</td>
+            </tr>
+
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- Resumo e Att. Github -->
+ <div class="flex mt-10 mb-10 ">
+
+    <!-- Título, nota e resumo-->
+    <div>
+
+        <h1 class="font-bold !font-orbitron text-2xl">Sobre o projeto</h1>
+        <div class=" items-center m-2 mb-5 flex items-center">
+            <iconify-icon icon="mdi:star-outline" class="text-2xl cursor-pointer transition-all duration-50 ease-in-out hover:scale-105"></iconify-icon>
+            <span class="text-xl ">{{projeto.avaliacao}}</span><span class="text-xl">/</span><span class="text-xl ">5,0</span>
+        </div>
+
+        <div class="border shadow-sm rounded-lg ml w-full h-150 p-5 min-w-sm max-w-xl overflow-hidden break-words">
+            <p class="text-left">{{projeto.resumo|capfirst}}</p>
+        </div>
+    </div>
+
+    <!-- Github -->
+    <!-- Github -->
+<div class="w-130 mt-10 mr-20 ml-60 flex flex-col self-start sticky top-10">
+    <!--Título-->
+    <h1 class="font-bold !font-orbitron text-2xl text-center mb-5">Atualizações</h1>
+
+    <!-- Commits -->
+    <div class="border rounded-lg shadow-sm w-full flex flex-col">
+
+        <!-- Icone Github -->
+        <div class="flex justify-center mt-5">
+            <iconify-icon icon="mdi:github" class="text-7xl"></iconify-icon>
+        </div>
+
+        <!-- Lista de commits -->
+        <div class="flex flex-col gap-5 p-4">
+
+            <div class="flex items-center gap-2">
+                <iconify-icon icon="mdi:source-commit" class="text-2xl -rotate-90"></iconify-icon>
+                <span class="!font-orbitron font-bold text-sm">Commits em 8 de abril de 2026</span>
+            </div>
+
+            <div class="flex flex-col gap-2 px-3">
+                <div class="border-2 rounded-lg p-3">
+                    <h2 class="text-blue-main underline">Merge pull request $19</h2>
+                    <span class="text-green-main text-sm">demostenessena</span>
+                </div>
+                <div class="border-2 rounded-lg p-3">
+                    <h2 class="text-blue-main underline">Update initial version date</h2>
+                    <span class="text-red-main text-sm">Erickjob</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <iconify-icon icon="mdi:source-commit" class="text-2xl -rotate-90"></iconify-icon>
+                <span class="!font-orbitron font-bold text-sm">Commits em 26 de março de 2026</span>
+            </div>
+
+            <div class="flex flex-col gap-2 px-3">
+                <div class="border-2 rounded-lg p-3">
+                    <h2 class="text-blue-main underline">Innitial commit</h2>
+                    <span class="text-green-main text-sm">fellipealeixo</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Filtro -->
+        <div class="border rounded-lg bg-purple-main flex items-center justify-around gap-4 p-4 mt-2">
+            <span class="text-white !font-orbitron font-bold">Período</span>
+            <div class="bg-white border p-2 rounded-lg text-center w-full">
+                <span class="!font-orbitron font-bold">Todos</span>
+            </div>
+            <div class="bg-white border p-2 rounded-lg text-center w-full">
+                <span class="!font-orbitron font-bold">-</span>
+            </div>
+            <div class="bg-white border p-2 rounded-lg text-center w-full">
+                <span class="!font-orbitron font-bold">-</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+ </div>
+
+<script>
+function copyObjectUrl(fullUrl) {
+    // Navigator API copies the built URL string
+    navigator.clipboard.writeText(fullUrl)
+}
+</script>
+{% include "app/projetos_similares.html" %}
+
+{% endblock %}
+
+ </div>

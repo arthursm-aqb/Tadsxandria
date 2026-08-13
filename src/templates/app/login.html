@@ -1,0 +1,60 @@
+{% extends "base_cadastro.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<!-- <body class="flex h-screen font-share"> -->
+<div class="flex flex-col md:flex-row min-h-screen font-share overflow-x-hidden">
+    <!-- LADO ESQUERDO -->
+    <!-- <div class="w-1/2 flex flex-col justify-between p-8 bg-gradient-to-b from-[#4A00B4] to-[#701783]"> -->
+    <div class="w-full md:w-1/2 flex flex-col justify-between p-6 md:p-8 bg-gradient-to-b from-[#4A00B4] to-[#701783] relative">
+        <header class="pl-8">
+            <figure>
+                <a href="{% url 'index' %}"><img src="{% static 'img/seta.svg' %}" alt="botao de seta para voltar da página" class="w-12 h-12"></a>
+            </figure>
+            <img src="{% static 'img/torre.svg' %}" alt="torre que fica em cima do titulo - logo" class="w-14 h-14 absolute top-[170px] absolute left-[304px]">
+            <h1 class="font-share font-bold text-[50px] text-white pt-32">BEM-VINDO(A) <br> FAÇA SEU LOGIN <br> OU CADASTRE-SE</h1>
+        </header>
+            
+
+        <footer class="pl-8">
+            <p class="font-orbitron font-semibold text-white">TADSXANDRIA BIBLIOTECA</p>
+        </footer>
+    </div>
+
+    <!-- LADO DIREITO -->
+    <!-- <div class="w-1/2 flex items-center justify-center p-8 bg-[#FFFFFB]"> -->
+    <div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 bg-[#FFFFFB]">
+        <section class="w-2/3 flex items-center justify-center border border-black bg-white px-10 py-10 rounded-[25px]">
+            <form method="POST" class="w-full max-w-md bg-white flex flex-col items-center">
+            {% csrf_token %}
+            <h2 class="flex items-center w-full gap-2 font-orbitron font-bold text-[30px] mb-4"><img src="{% static 'img/conta.svg' %}" alt="icone da conta" class="h-20 w-15">Faça seu Login</h2>
+            <br>
+            {% if erro %}
+                <p class="text-red-600 mb-2 w-full mx-4 text-left font-exo font-semibold">{{ erro }}</p>
+            {% endif %}
+
+            <label for="email" class="font-exo mx-4 flex w-full">Email <small class="text-red-600">*</small></label><!--<br>-->
+            <input class="border border-gray-400 rounded-full p-2 w-full font-exo mb-4" id="email" name="email" type="email" placeholder="Digite seu email..." required>
+
+            <label for="senha" class="font-exo mx-4 flex w-full">Senha <small class="text-red-600">*</small></label><!--<br>-->
+            <input class="border border-gray-400 rounded-full p-2 w-full font-exo mb-6" id="senha" name="senha" type="password" placeholder="Digite sua senha..." required>
+
+            <button type="submit" id="botao_entrar" class="bg-[#63B536] text-white py-2 px-4 rounded-full w-2/3 hover:bg-[#205503] font-exo font-bold mb-4 mx-12">ENTRAR</button>
+            <p class="text-[#89449F] font-exo font-semibold text-center underline"><a href="">Esqueceu sua senha?</a></p>
+                
+            <br><hr class="border-1 border-black w-1/2 mx-auto">
+            <p class="text-center font-exo pt-3">Não tem conta?</p>
+            <p class="text-[#63B536] font-exo font-semibold text-center underline"><a href="{% url 'cadastrar_conta' %}">Cadastre-se!</a></p>
+            <br><hr class="border-1 border-black w-1/2 mx-auto">
+            <p class="opacity-50 text-[#89449F] font-exo font-semibold underline gap-2 items-center justify-center flex"><img src="{% static 'img/material-icon-theme_google.svg' %}" alt="Ícone do google" class="h-10 w-5"><a href="" aria-disabled="true">Fazer login com o Google</a></p>
+            <p class="opacity-50 text-[#89449F] font-exo font-semibold underline gap-2 items-center justify-center flex"><img src="{% static 'img/bi_github.svg' %}" alt="Ícone do github" class="h-10 w-5"><a href="" aria-disabled="true">Fazer login com o Github</a></p>
+
+
+            </form>
+        </section>
+    </div>
+</div>
+<!-- </body> -->
+{% endblock %}
